@@ -3,5 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
+#include <string.h>
 char *_getenv(const char *name);
+int parser(char str[], char *av[]);
+char *edit(char *str);
 #endif

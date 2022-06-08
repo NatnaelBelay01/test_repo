@@ -1,13 +1,11 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/wait.h>
+#include "main.h"
 
 int main(void)
 {
-	int status, i = 1;
-	char *av[2];
-	char *str;
+	int i = 1;
+	char *av[100];
+	char *envp[] = {"PATH=/bin", 0};
+	char *str = NULL;
 	size_t strlen = 0;
 	ssize_t linelen;
 	pid_t child;
@@ -16,25 +14,25 @@ int main(void)
 	{
 		printf("#Cisfun$ ");
 		linelen = getline(&str, &strlen, stdin);
-		if (linelen < 0)
+		if(str[0] == '\n')
+			continue;
+		if(linelen == -1)
 		{
-			perror("Error");
+			printf("\n");
+			exit(1);
 		}
 		str[linelen - 1] = '\0';
-		av[0] = str;
-		av[1] = NULL;
+		str = edit(str);
+		parser(str, av);
 		child = fork();
 		if (child == 0)
 		{
-			if (execve(av[0], av, NULL) == -1)
-			{
-			perror("Error:");
-			}
+			if (execve(av[0], av, envp) == -1)
+				perror("./shell");
 		}
 		else
-		{
-			wait(&status);
-		}
+			wait(0);
 	}
+	free(str);
 	return (0);
 }
