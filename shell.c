@@ -3,9 +3,8 @@
 int main(void)
 {
 	int i = 1;
-	char *av[100];
-	char *envp[] = {"PATH=/bin", 0};
-	char *str = NULL;
+	char *av[100], *str = NULL;
+	extern char **environ;
 	size_t strlen = 0;
 	ssize_t linelen;
 	pid_t child;
@@ -27,7 +26,7 @@ int main(void)
 		child = fork();
 		if (child == 0)
 		{
-			if (execve(av[0], av, envp) == -1)
+			if (execve(av[0], av, environ) == -1)
 				perror("./shell");
 		}
 		else
