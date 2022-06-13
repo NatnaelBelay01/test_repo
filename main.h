@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <string.h>
+extern char **environ;
 char *_getenv(const char *name);
 int parser(char str[], char *av[]);
 char *edit(char *str);

@@ -1,9 +1,12 @@
 #include "main.h"
+/**
+ * main - the main fucntion
+ * Return: always 0
+ */
 
 int main(void)
 {
 	char *av[100], *str = NULL;
-	extern char **environ;
 	size_t strlen;
 	ssize_t linelen;
 	int status = 0;
@@ -28,7 +31,7 @@ int main(void)
 		if (ex_check(str) == 1)
 		{
 			free(str);
-			exit (0);
+			exit(0);
 		}
 		str = edit(str);
 		parser(str, av);
@@ -37,7 +40,7 @@ int main(void)
 		{
 			if (execve(av[0], av, environ) == -1)
 			{
-				perror("./shell:");
+				perror("./shell");
 				break;
 			}
 		}

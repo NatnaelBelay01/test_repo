@@ -1,10 +1,14 @@
 #include "main.h"
-
+/**
+ * edit - a function that edits input
+ * @str: the string to be edited
+ * Return: a pointer to the edited string
+ */
 
 char *edit(char *str)
 {
 	int i, status = 0;
-	char *s = "/bin/" , *temp;
+	char *s = "/bin/", *temp;
 
 	for (i = 0; i < 5; i++)
 	{
