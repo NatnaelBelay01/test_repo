@@ -8,4 +8,7 @@
 char *_getenv(const char *name);
 int parser(char str[], char *av[]);
 char *edit(char *str);
+int ex_check(char *s);
+char *_strcat(char *dest, char *src);
+int _strlen(char *s);
 #endif

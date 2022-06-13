@@ -17,9 +17,10 @@ char *edit(char *str)
 
 	if (status == 1)
 	{
-		temp = malloc(sizeof(str) + 5);
-		strcat(temp, s);
-		strcat(temp, str);
+		temp = malloc(sizeof(_strlen(str)) + 5);
+		_strcat(temp, s);
+		_strcat(temp, str);
+		free(str);
 		str = temp;
 		temp = NULL;
 	}
