@@ -3,13 +3,10 @@
  * main - the main fucntion
  * Return: always 0
  */
-
 int main(void)
 {
 	char *av[100], *str = NULL;
-	size_t strlen;
-	ssize_t linelen;
-	int status = 0;
+	int status = 0, len = 0;
 	pid_t child;
 
 	while (1)
@@ -19,20 +16,17 @@ int main(void)
 			write(1, "($) ", 4);
 			status = 1;
 		}
-		linelen = getline(&str, &strlen, stdin);
+		len = input(&str);
+		if (len == -1)
+			break;
 		if (str[0] == '\n')
 		{
 			status = 0;
 			continue;
 		}
-		if (linelen == -1)
-			break;
-		str[linelen - 1] = '\0';
+		str[len - 1] = '\0';
 		if (ex_check(str) == 1)
-		{
-			free(str);
-			exit(0);
-		}
+			break;
 		str = edit(str);
 		parser(str, av);
 		child = fork();

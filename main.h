@@ -12,4 +12,5 @@ char *edit(char *str);
 int ex_check(char *s);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
+int input(char **str);
 #endif
