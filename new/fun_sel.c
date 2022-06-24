@@ -14,7 +14,7 @@ int fun_sel(list_t **head, char *oprn, int count)
 			result = atoi(temp->value) / atoi(temp->next->next->value);
 			temp->value = itoa(result);
 			break;
-		case ('*'):
+		case ('x'):
 			temp = nvgt(head, count);
 			result = atoi(temp->value) * atoi(temp->next->next->value);
 			temp->value = itoa(result);

@@ -3,21 +3,21 @@
 int syntax(char *arg[], int len)
 {
   int i, j, k;
-  char *oprns[] = {"+", "-", "*", "/", NULL};
+  char *oprns[] = {"+", "-", "x", "/", NULL};
   for (i = 0; oprns[i] != NULL; i++)
     {
-      if (atoi(arg[len - 1]) == atoi(oprns[i]))
+      if (strcmp(arg[len - 1], oprns[i]) == 0)
 	return (-1);
     }
   for (i = 0; arg[i] != NULL; i++)
     {
       for (j = 0; oprns[j] != NULL; j++)
 	{
-	  if (atoi(oprns[j]) == atoi(arg[i]))
+	  if (strcmp(oprns[j], arg[i]) == 0)
 	    {
 	      for (k = 0; oprns[k] != NULL; k++)
 		{
-		  if (atoi(arg[i + 1]) == atoi(oprns[k]))
+		  if (strcmp(arg[i + 1], oprns[k]) == 0)
 		    return (-1);
 		}
 	    }

@@ -4,7 +4,7 @@ int oprtor(list_t **head)
 {
 	list_t *temp;
 	int i, count;
-	char *oprns[] = {"/", "*", "+", "-", NULL};
+	char *oprns[] = {"/", "x", "+", "-", NULL};
 
 	for (i = 0; oprns[i] != NULL; i++)
 	{
@@ -12,16 +12,15 @@ int oprtor(list_t **head)
 		temp = *head;
 		while (temp->next != NULL)
 		{
-			if (atoi(temp->next->value) == atoi(oprns[i]))
+			if (strcmp(temp->next->value, oprns[i]) == 0)
 			{
-				printf("\tbefore fun_sel\n");
-				print_list(*head);
-				fun_sel(head, oprns[i], count);
-				printf("\tafter fun_sel\n");
-				print_list(*head);
-				restruct(head, count);
-				printf("\tafter restruct\n");
-				print_list(*head);
+				while (temp->next != NULL && strcmp(temp->next->value, oprns[i]) == 0)
+				{
+					fun_sel(head, temp->next->value, count);
+					restruct(head, count);
+				}
+				if (temp->next == NULL)
+					break;
 			}
 			temp = temp->next;
 			count++;

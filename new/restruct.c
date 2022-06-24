@@ -5,7 +5,7 @@ list_t *restruct(list_t **head, int count)
 	list_t *temp = *head, *temp1;
 	while (count > 0)
 	{
-		temp =temp->next;
+		temp = temp->next;
 		count--;
 	}
 	temp1 = temp;

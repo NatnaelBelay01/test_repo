@@ -7,7 +7,7 @@ list_t *add_node(list_t **head, char *data[], int ac)
 
   if (data == NULL)
     return (NULL);
-  while (ac > 0)
+  while (ac > 0 && data[i] != NULL)
     {
       node = malloc(sizeof(list_t));
       if (node == NULL)
@@ -18,6 +18,7 @@ list_t *add_node(list_t **head, char *data[], int ac)
       if (*head == NULL)
 	{
 	  *head = node;
+	  ac--;
 	  continue;
 	}
       temp = *head;
@@ -28,5 +29,5 @@ list_t *add_node(list_t **head, char *data[], int ac)
       temp->next = node;
       ac--;
     }
-  return (node);
+  return (*head);
 }
