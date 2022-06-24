@@ -2,25 +2,32 @@
 
 int fun_sel(list_t **head, char *oprn, int count)
 {
-	list_t temp;
+	list_t *temp;
+	char c;
+	int result;
 
-	switch (oprn)
+	c = chg(oprn);
+	switch (c)
 	{
-		case "\":
+		case ('/'):
 			temp = nvgt(head, count);
-			temp->value = (char *)(atoi(temp->value) \ atoi(temp->next->next->value));
+			result = atoi(temp->value) / atoi(temp->next->next->value);
+			temp->value = itoa(result);
 			break;
-		case "*":
+		case ('*'):
 			temp = nvgt(head, count);
-			temp->value = (char *)(atoi(temp->value) * atoi(temp->next->next->value));
+			result = atoi(temp->value) * atoi(temp->next->next->value);
+			temp->value = itoa(result);
 			break;
-		case "+":
+		case ('+'):
 			temp = nvgt(head, count);
-			temp->value = (char *)(atoi(temp->value) + atoi(temp->next->next->value));
+			result = atoi(temp->value) + atoi(temp->next->next->value);	
+			temp->value = itoa(result);
 			break;
 		default:
 			temp = nvgt(head, count);
-			temp->value = (char *)(atoi(temp->value) - atoi(temp->next->next->value));
+			result = atoi(temp->value) - atoi(temp->next->next->value);
+			temp->value = itoa(result);
 			break;
 	}
 	return (0);

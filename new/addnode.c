@@ -2,7 +2,7 @@
 
 list_t *add_node(list_t **head, char *data[], int ac)
 {
-  int i = 0;
+  int i = 1;
   list_t *node , *temp;
 
   if (data == NULL)
@@ -15,10 +15,9 @@ list_t *add_node(list_t **head, char *data[], int ac)
       node->value = strdup(data[i]);
       i++;
       node->next = NULL;
-      if (head = NULL)
+      if (*head == NULL)
 	{
 	  *head = node;
-	  node = NULL;
 	  continue;
 	}
       temp = *head;
@@ -27,8 +26,7 @@ list_t *add_node(list_t **head, char *data[], int ac)
 	  temp = temp->next;
 	}
       temp->next = node;
-      node = NULL;
       ac--;
     }
-  return (*head);
+  return (node);
 }

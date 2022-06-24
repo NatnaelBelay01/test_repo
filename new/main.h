@@ -16,6 +16,8 @@ list_t *add_node(list_t **head, char *data[], int ac);
 int fun_sel(list_t **head, char *oprn, int count);
 list_t *nvgt(list_t **head, int count);
 int oprtor(list_t **head);
-int *restruct(list_t **head, int count);
+list_t *restruct(list_t **head, int count);
 int syntax(char *arg[], int len);
+char chg(char *s);
+char *itoa(int n);
 #endif

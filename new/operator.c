@@ -10,12 +10,18 @@ int oprtor(list_t **head)
 	{
 		count = 0;
 		temp = *head;
-		while (temp->next ! NULL)
+		while (temp->next != NULL)
 		{
-			if (temp->next->value == oprns[i])
+			if (atoi(temp->next->value) == atoi(oprns[i]))
 			{
+				printf("\tbefore fun_sel\n");
+				print_list(*head);
 				fun_sel(head, oprns[i], count);
+				printf("\tafter fun_sel\n");
+				print_list(*head);
 				restruct(head, count);
+				printf("\tafter restruct\n");
+				print_list(*head);
 			}
 			temp = temp->next;
 			count++;
