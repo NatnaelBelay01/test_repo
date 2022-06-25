@@ -5,7 +5,11 @@ char *itoa(int n)
 	int i, j = 0;
 	char *s;
 
-	for (i = n; i > 0; i = i / 10)
+	if (n < 0)
+		i = -1 * n;
+	else
+		i = n;
+	for (i ; i > 0; i = i / 10)
 		j++;
 	if (n == 0)
 	{
@@ -15,6 +19,20 @@ char *itoa(int n)
 	}
 	else
 	{
+		if (n < 0)
+		{
+			i = -1 * n;
+			s = malloc(sizeof(char) * (j + 2));
+			s[j + 1] = '\0';
+			s[0] = '-';
+			while (j > 0)
+			{
+				s[j] = 48 + (i % 10);
+				i = i / 10;
+				j--;
+			}
+			return (s);
+		}
 		s = malloc(sizeof(char) * (j + 1));
 		s[j] = '\0';
 		while (j > 0)
