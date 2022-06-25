@@ -14,5 +14,7 @@ int main(int ac, char **av)
 	if (check(&head) == -1)
 		oprtor(&head);
 	print_list(head);
+	free(head->value);
+	free(head);
 	return (0);
 }
