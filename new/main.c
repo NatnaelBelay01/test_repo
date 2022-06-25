@@ -11,6 +11,8 @@ int main(int ac, char **av)
 	}
 	add_node(&head, av, ac);
 	oprtor(&head);
+	if (check(&head) == -1)
+		oprtor(&head);
 	print_list(head);
 	return (0);
 }

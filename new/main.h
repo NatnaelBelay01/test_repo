@@ -20,4 +20,5 @@ list_t *restruct(list_t **head, int count);
 int syntax(char *arg[], int len);
 char chg(char *s);
 char *itoa(int n);
+int check(list_t **head);
 #endif
